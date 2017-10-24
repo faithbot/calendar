@@ -1,52 +1,3 @@
-#header {
-	line-height: 27px;
-	background: white;
-	position: fixed;
-	left: 0;
-	right: 0;
-	height: 27px;
-	padding: 5px;
-	text-align: center;
-}
-
-#header {
-	top: 0;
-	border-bottom: 2px solid black;
-}
-
-#help {
-	display: none;
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	background: black;
-	background: rgba(0, 0, 0, 0.75);
-}
-
-#help div {
-	text-align: right;
-	margin: 150px auto 0 auto;
-	width: 400px;
-	height: 90px;
-	padding: 20px;
-	color: black;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	-moz-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-	background: white;
-}
-
-#help ul {
-	margin: 0;
-	padding: 0 0 20px 20px;
-	text-align: left;
-	line-height: 15px;
-}
-
 a.button {
 	display: inline-block;
 	color: black;
@@ -118,19 +69,6 @@ td.today {
 	width: 116px;
 }
 
-textarea {
-	display: block;
-	width: 100%;
-	overflow: hidden;
-	font: 12px sans-serif;
-	margin: 3px 0 0 0;
-	padding: 2px 5px 0 5px;
-	background: #CFE7FF;
-	border: 1px solid #5FAFFF;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	resize: none;
-}
 
 textarea:focus {
 	outline: none;
@@ -145,5 +83,5 @@ a:focus {
 }
 
 @media screen and (max-width: 770px) {
-	
+	table
 }
