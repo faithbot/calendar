@@ -28,13 +28,13 @@ body, td {
 table {
 	margin: 0 auto;
 	border-spacing: 0 0;
-	border-left: 1px solid black;
-	border-top: 1px solid black;
+	border-left: 1px solid #aaa;
+	border-top: 1px solid #aaa;
 }
 
 td {
-	border-right: 1px solid black;
-	border-bottom: 1px solid black;
+	border-right: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
 	padding: 3px 15px 20px 3px;
 	text-align: right;
 	vertical-align: top;
@@ -57,7 +57,7 @@ td.extra {
 }
 
 td.shaded {
-	background: #CFE7FF;
+	background: #f2f2f2;
 }
 
 td.today {
@@ -82,6 +82,25 @@ a:focus {
 	outline: none;
 }
 
-@media screen and (max-width: 770px) {
-	table
+@media only screen and (max-width: 770px) and (min-width: 480) {
+	.calendar table,
+	.calendar tbody,
+	.calendar tr,
+	.calendar td {
+		min-height: 70px;
+	}
+}
+
+@media only screen and (max-width : 480px) {
+	table.calendar,
+	.calendar tbody,
+	.calendar tr,
+	.calendar td {
+		display: block;
+	}
+	.calendar td {
+		width: 100%;
+		box-sizing: border-box;
+		min-height: 250px;
+	}
 }
