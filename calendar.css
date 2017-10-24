@@ -41,9 +41,7 @@ table.calendar {
 }
 
 .calendar td.today {
-	 -moz-box-shadow:    inset 0 0 10px #777;
-   -webkit-box-shadow: inset 0 0 10px #777;
-   box-shadow:         inset 0 0 10px #777;
+	background: #e5e5e5;
 }
 
 
@@ -81,7 +79,7 @@ table.calendar {
 		min-height: 250px;
 	}
 	.calendar td span {
-		display: none;
+		//display: none;
 	}
 	.calendar td:nth-child(n+2) {
 		display: none;
