@@ -142,30 +142,6 @@ function checkItem()
 	}
 }
 
-/*function generateItem(parentId, itemId)
-{
-	var item = document.createElement('textarea');
-	var parent = document.getElementById(parentId);
-	if(!parent) return; // offscreen items aren't generated
-	parent.appendChild(item);
-	item.id = itemId;
-	item.onkeyup = keydownHandler;
-	item.onblur = checkItem;
-	item.spellcheck = false;
-	return item;
-}*/
-
-/*document.onclick = function(e)
-{
-	var parentId = e.target.id;
-	if(parentId.indexOf('_') == -1) return;
-
-	var item = generateItem(parentId, nextItemId());
-	recalculateHeight(item.id);
-	storeValueForItemId(item.id);
-	item.focus();
-}*/
-
 function generateDay(day, date)
 {
 	var isShaded = (date.getMonth() % 2);
