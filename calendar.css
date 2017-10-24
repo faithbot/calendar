@@ -1,24 +1,4 @@
-.calendar a.button {
-	display: inline-block;
-	color: black;
-	text-decoration: none;
-	padding: 5px 15px;
-	line-height: 15px;
-	margin: 0 0 0 5px;
-	border: 1px solid #999;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	background: #EFEFEF;
-	background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#DFDFDF));
-}
-
-.calendar a.button:active {
-	background: #D7D7D7;
-	background: -webkit-gradient(linear, left top, left bottom, from(#CFCFCF), to(#DFDFDF));
-}
-
-.calendar body, td {
+body, td {
 	background: white;
 	color: #3a3a3a;
 	margin: 0;
@@ -61,12 +41,9 @@ table.calendar {
 }
 
 .calendar td.today {
-	border-left: 2px solid black;
-	border-top: 2px solid black;
-	border-right: 3px solid black;
-	border-bottom: 3px solid black;
-	padding-top: 1px;
-	width: 116px;
+	 -moz-box-shadow:    inset 0 0 10px #777;
+   -webkit-box-shadow: inset 0 0 10px #777;
+   box-shadow:         inset 0 0 10px #777;
 }
 
 
@@ -91,7 +68,7 @@ table.calendar {
 	}
 }
 
-@media only screen and (max-width : 480px) {
+@media only screen and (max-width: 480px) {
 	table.calendar,
 	.calendar tbody,
 	.calendar tr,
@@ -103,4 +80,11 @@ table.calendar {
 		box-sizing: border-box;
 		min-height: 250px;
 	}
+	.calendar td span {
+		display: none;
+	}
+	.calendar td:nth-child(n+2) {
+		display: none;
+	}
 }
+
