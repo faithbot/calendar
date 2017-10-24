@@ -1,4 +1,4 @@
-a.button {
+.calendar a.button {
 	display: inline-block;
 	color: black;
 	text-decoration: none;
@@ -13,28 +13,28 @@ a.button {
 	background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#DFDFDF));
 }
 
-a.button:active {
+.calendar a.button:active {
 	background: #D7D7D7;
 	background: -webkit-gradient(linear, left top, left bottom, from(#CFCFCF), to(#DFDFDF));
 }
 
-body, td {
+.calendar body, td {
 	background: white;
-	color: black;
+	color: #3a3a3a;
 	margin: 0;
 	font: 12px sans-serif;
 }
 
-table {
+table.calendar {
 	margin: 0 auto;
 	border-spacing: 0 0;
-	border-left: 1px solid #aaa;
-	border-top: 1px solid #aaa;
+	border-left: 1px solid #bbb;
+	border-top: 1px solid #bbb;
 }
 
-td {
-	border-right: 1px solid #aaa;
-	border-bottom: 1px solid #aaa;
+.calendar td {
+	border-right: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
 	padding: 3px 15px 20px 3px;
 	text-align: right;
 	vertical-align: top;
@@ -43,11 +43,11 @@ td {
 	cursor: pointer;
 }
 
-td span {
+.calendar td span {
 	margin-right: -10px;
 }
 
-td.extra {
+.calendar td.extra {
 	padding: 3px 10px;
 	text-align: left;
 	border: none;
@@ -56,11 +56,11 @@ td.extra {
 	cursor: auto;
 }
 
-td.shaded {
+.calendar td.shaded {
 	background: #f2f2f2;
 }
 
-td.today {
+.calendar td.today {
 	border-left: 2px solid black;
 	border-top: 2px solid black;
 	border-right: 3px solid black;
@@ -70,15 +70,15 @@ td.today {
 }
 
 
-textarea:focus {
+.calendar textarea:focus {
 	outline: none;
 }
 
-td.shaded textarea {
+.calendar td.shaded textarea {
 	background: white;
 }
 
-a:focus {
+.calendar a:focus {
 	outline: none;
 }
 
