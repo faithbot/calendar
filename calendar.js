@@ -30,11 +30,13 @@
 // TODO: small resizing problem when today box moves to the next day
 // TODO: need a way of exporting/importing data
 
+/*
 function nextItemId()
 {
 	localStorage.nextId = localStorage.nextId ? parseInt(localStorage.nextId) + 1 : 0;
 	return 'item' + localStorage.nextId;
 }
+*/
 
 // callback expects a list of objects with the itemId and itemValue properties set
 function lookupItemsForParentId(parentId, callback)
