@@ -86,3 +86,18 @@ table.calendar {
 	}
 }
 
+
+
+
+    .calendar-wrapper,
+    .calendar-wrapper-inner {
+        max-height: 600px;
+    }
+
+   .calendar-wrapper {
+        overflow: hidden;
+    }
+
+   .calendar-wrapper-inner {
+
+    }
