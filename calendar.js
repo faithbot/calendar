@@ -56,7 +56,7 @@ function lookupItemsForParentId(parentId, callback)
 		callback(list);
 	}
 }
-
+/*
 function storeValueForItemId(itemId)
 {
 	var item = document.getElementById(itemId);
@@ -104,7 +104,7 @@ function removeValueForItemId(itemId)
 			}
 		}
 	}
-}
+}*/
 
 var todayDate;
 var firstDate;
