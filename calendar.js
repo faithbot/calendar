@@ -140,7 +140,7 @@ function checkItem()
 	}
 }
 
-function generateItem(parentId, itemId)
+/*function generateItem(parentId, itemId)
 {
 	var item = document.createElement('textarea');
 	var parent = document.getElementById(parentId);
@@ -151,9 +151,9 @@ function generateItem(parentId, itemId)
 	item.onblur = checkItem;
 	item.spellcheck = false;
 	return item;
-}
+}*/
 
-document.onclick = function(e)
+/*document.onclick = function(e)
 {
 	var parentId = e.target.id;
 	if(parentId.indexOf('_') == -1) return;
@@ -162,7 +162,7 @@ document.onclick = function(e)
 	recalculateHeight(item.id);
 	storeValueForItemId(item.id);
 	item.focus();
-}
+}*/
 
 function generateDay(day, date)
 {
