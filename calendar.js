@@ -26,29 +26,7 @@
  OTHER DEALINGS IN THE SOFTWARE.
 */
 
-// TODO: maybe put in a way to go to any date which reloads the calendar at that date
-// TODO: small resizing problem when today box moves to the next day
-// TODO: need a way of exporting/importing data
 
-
-// callback expects a list of objects with the itemId and itemValue properties set
-function lookupItemsForParentId(parentId, callback)
-{
-	if(localStorage[parentId])
-	{
-		var parentIdsToItemIds = localStorage[parentId].split(',');
-		var list = [];
-
-		for(var i in parentIdsToItemIds)
-		{
-			var itemId = parentIdsToItemIds[i];
-			var itemValue = localStorage[itemId];
-			list.push({'itemId': itemId, 'itemValue': itemValue});
-		}
-
-		callback(list);
-	}
-}
 
 var todayDate;
 var firstDate;
@@ -97,15 +75,6 @@ function generateDay(day, date)
 	day.id = idForDate(date);
 	day.innerHTML = '<span>' + date.getDate() + '</span>';
 
-	lookupItemsForParentId(day.id, function(items)
-	{
-		for(var i in items)
-		{
-			var item = generateItem(day.id, items[i].itemId);
-			item.value = items[i].itemValue;
-			recalculateHeight(item.id);
-		}
-	});
 }
 
 function prependWeek()
@@ -203,7 +172,12 @@ function documentScrollTop()
 
 var elementInHtml = document.getElementById('fxh');
 console.log("element is " + elementInHtml); // null?
+
 	
+// get the outer div element
+var calendarContainer = document.getElementById('calendarContainer');
+console.log("calendar container is " + calendarContainer);
+
 
 function documentScrollHeight()
 {
@@ -240,10 +214,9 @@ function poll()
 	var newTodayDate = new Date;
 	if(newTodayDate.getDate() != todayDate.getDate() || newTodayDate.getMonth() != todayDate.getMonth() || newTodayDate.getFullYear() != todayDate.getFullYear())
 	{
-		// TODO: resize all items in yesterday and today because of the border change
 
-		var todayElement = document.getElementById(idForDate(todayDate));
-		if(todayElement) todayElement.className = todayElement.className.replace('today', '');
+/*		var todayElement = document.getElementById(idForDate(todayDate));
+		if(todayElement) todayElement.className = todayElement.className.replace('today', '');*/
 
 		todayDate = newTodayDate;
 
