@@ -151,7 +151,8 @@ function appendWeek()
 function scrollPositionForElement(element)
 {
 	// find the y position by working up the DOM tree
-	var clientHeight = element.clientHeight;
+	var clientHeight = element.clientHeight; // equals 123
+	
 	var y = element.offsetTop;
 	while(element.offsetParent && element.offsetParent != document.body)
 	{
@@ -177,7 +178,7 @@ function curve(x)
 	return (x < 0.5) ? (4*x*x*x) : (1 - 4*(1-x)*(1-x)*(1-x));
 }
 
-function scrollAnimation()
+/*function scrollAnimation()
 {
 	var percent = (new Date() - startTime) / 1000;
 
@@ -187,7 +188,7 @@ function scrollAnimation()
 		window.scrollTo(0, Math.round(startY + (goalY - startY) * curve(percent)));
 		setTimeout('scrollAnimation()', 10);
 	}
-}
+}*/
 
 function documentScrollTop()
 {
