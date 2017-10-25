@@ -79,25 +79,33 @@ table.calendar {
 		min-height: 250px;
 	}
 	.calendar td span {
-		//display: none;
+		display: none;
 	}
 	.calendar td:nth-child(n+2) {
 		display: none;
 	}
 }
 
+#fixedheight{
+	height: 800px;
+}
 
+.calendar-wrapper-inner {
 
+}
 
-    .calendar-wrapper,
-    .calendar-wrapper-inner {
-        max-height: 600px;
-    }
+.calendar-wrapper,
+.calendar-wrapper-inner {
+	height: 600px;
+	max-height: 600px;
+	width: 500px;
+	overflow: hidden;
+}
 
-   .calendar-wrapper {
-        overflow: hidden;
-    }
-
-   .calendar-wrapper-inner {
-
-    }
+.calendar-wrapper {
+    -ms-overflow-style: none;  // IE 10+
+    overflow: -moz-scrollbars-none;  // Firefox
+}
+.calendar-wrapper::-webkit-scrollbar { 
+    display: none;  // Safari and Chrome
+}
