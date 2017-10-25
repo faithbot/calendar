@@ -32,6 +32,7 @@
 
 
 // callback expects a list of objects with the itemId and itemValue properties set
+/*
 function lookupItemsForParentId(parentId, callback)
 {
 	if(localStorage[parentId])
@@ -69,6 +70,7 @@ function recalculateHeight(itemId)
 	item.style.height = '0px'; // item.scrollHeight doesn't shrink on its own
 	item.style.height = item.scrollHeight + itemPaddingBottom + 'px';
 }
+*/
 
 function keydownHandler()
 {
@@ -194,8 +196,16 @@ function documentScrollTop()
 {
 	var scrollTop = document.body.scrollTop;
 	if(document.documentElement) scrollTop = Math.max(scrollTop, document.documentElement.scrollTop);
+	
+	// console.log("this.scrollHeight is " + this.scrollHeight);
+	
 	return scrollTop;
 }
+	
+
+var elementInHtml = document.getElementById('fxh');
+console.log("element is " + elementInHtml); // null?
+	
 
 function documentScrollHeight()
 {
@@ -205,13 +215,13 @@ function documentScrollHeight()
 	return scrollHeight;
 }
 
-function smoothScrollToToday()
+/*function smoothScrollToToday()
 {
 	goalY = scrollPositionForElement(document.getElementById(idForDate(todayDate)));
 	startY = documentScrollTop();
 	startTime = new Date();
 	if(goalY != startY) setTimeout('scrollAnimation()', 10);
-}
+}*/
 
 // TODO: when scrolling down, safari sometimes scrolls down by the exact height of content added
 function poll()
