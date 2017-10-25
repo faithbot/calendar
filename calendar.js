@@ -32,7 +32,6 @@
 
 
 // callback expects a list of objects with the itemId and itemValue properties set
-/*
 function lookupItemsForParentId(parentId, callback)
 {
 	if(localStorage[parentId])
@@ -70,7 +69,6 @@ function recalculateHeight(itemId)
 	item.style.height = '0px'; // item.scrollHeight doesn't shrink on its own
 	item.style.height = item.scrollHeight + itemPaddingBottom + 'px';
 }
-*/
 
 function keydownHandler()
 {
