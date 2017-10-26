@@ -136,8 +136,6 @@ function documentScrollHeight()
 	var scrollHeight = document.body.scrollHeight; // 600
 	if(document.documentElement) scrollHeight = Math.max(scrollHeight, document.documentElement.scrollHeight);
 	
-	// console.log("scrollHeight " + scrollHeight);
-	
 	return scrollHeight;
 }
 
