@@ -32,7 +32,7 @@ var todayDate;
 var firstDate;
 var lastDate;
 var calendarTableElement;
-var itemPaddingBottom = (navigator.userAgent.indexOf('Firefox') != -1) ? 2 : 0;
+//var itemPaddingBottom = (navigator.userAgent.indexOf('Firefox') != -1) ? 2 : 0;
 var months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
 
 function idForDate(date)
@@ -55,14 +55,14 @@ function keydownHandler()
 	this.storeTimeout = setTimeout('storeValueForItemId("' + this.id + '")', 100);
 }*/
 
-function checkItem()
+/*function checkItem()
 {
 	if(this.value.length == 0)
 	{
 		removeValueForItemId(this.id);
 		this.parentNode.removeChild(this);
 	}
-}
+}*/
 
 function generateDay(day, date)
 {
@@ -128,6 +128,8 @@ function scrollPositionForElement(element)
 		element = element.offsetParent;
 		y += element.offsetTop;
 	}
+	
+	console.log("y " + y); // 372
 
 	// center the element in the window
 	return y - (window.innerHeight - clientHeight) / 2;
@@ -153,8 +155,8 @@ function documentScrollTop()
 }
 	
 
-var elementInHtml = document.getElementById('fxh');
-console.log("element is " + elementInHtml); // null?
+var elementInHtml = document.getElementById('calendarContainer').clientHeight; // 600, height ofcontainer
+console.log("calendarContainer is " + elementInHtml);
 
 	
 // get the outer div element
@@ -221,6 +223,9 @@ function loadCalendarAroundDate(seedDate)
 		prependWeek();
 		appendWeek();
 	}
+	
+	//console.log("document scroll height " + documentScrollHeight);
+	console.log("window.innerheight " + window.innerheight);
 
 	// need to let safari recalculate heights before we start scrolling
 	setTimeout('scrollToToday()', 50);
