@@ -26,8 +26,6 @@
  OTHER DEALINGS IN THE SOFTWARE.
 */
 
-
-
 var todayDate;
 var firstDate;
 var lastDate;
@@ -39,30 +37,6 @@ function idForDate(date)
 {
 	return date.getMonth() + '_' + date.getDate() + '_' + date.getFullYear();
 }
-
-/*function recalculateHeight(itemId)
-{
-	var item = document.getElementById(itemId);
-	if(!item) return; // TODO: why is this sometimes null?
-	item.style.height = '0px'; // item.scrollHeight doesn't shrink on its own
-	item.style.height = item.scrollHeight + itemPaddingBottom + 'px';
-}
-
-function keydownHandler()
-{
-	recalculateHeight(this.id);
-	if(this.storeTimeout) clearTimeout(this.storeTimeout);
-	this.storeTimeout = setTimeout('storeValueForItemId("' + this.id + '")', 100);
-}*/
-
-/*function checkItem()
-{
-	if(this.value.length == 0)
-	{
-		removeValueForItemId(this.id);
-		this.parentNode.removeChild(this);
-	}
-}*/
 
 function generateDay(day, date)
 {
@@ -139,12 +113,6 @@ function scrollToToday()
 	window.scrollTo(0, scrollPositionForElement(document.getElementById(idForDate(todayDate))));
 }
 
-// var startTime;
-// var startY;
-// var goalY;
-
-
-
 function documentScrollTop()
 {
 	var scrollTop = document.body.scrollTop;
@@ -189,7 +157,7 @@ function poll()
 	}
 
 	// update today when the date changes
-/*	var newTodayDate = new Date;
+	var newTodayDate = new Date;
 	if(newTodayDate.getDate() != todayDate.getDate() || newTodayDate.getMonth() != todayDate.getMonth() || newTodayDate.getFullYear() != todayDate.getFullYear())
 	{
 
@@ -200,7 +168,7 @@ function poll()
 
 		todayElement = document.getElementById(idForDate(todayDate));
 		if(todayElement) todayElement.className += ' today';
-	}*/
+	}
 }
 
 function loadCalendarAroundDate(seedDate)
@@ -244,7 +212,3 @@ window.onload = function()
 	// sets interval of poll function
 	setInterval('poll()', 100);
 }
-
-
-
-//document.write('<table id="calendar"></table>');
