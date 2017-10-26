@@ -40,7 +40,7 @@ function idForDate(date)
 	return date.getMonth() + '_' + date.getDate() + '_' + date.getFullYear();
 }
 
-function recalculateHeight(itemId)
+/*function recalculateHeight(itemId)
 {
 	var item = document.getElementById(itemId);
 	if(!item) return; // TODO: why is this sometimes null?
@@ -53,7 +53,7 @@ function keydownHandler()
 	recalculateHeight(this.id);
 	if(this.storeTimeout) clearTimeout(this.storeTimeout);
 	this.storeTimeout = setTimeout('storeValueForItemId("' + this.id + '")', 100);
-}
+}*/
 
 function checkItem()
 {
@@ -73,7 +73,7 @@ function generateDay(day, date)
 	if(isToday) day.className += ' today';
 
 	day.id = idForDate(date);
-	day.innerHTML = '<span>' + date.getDate() + '</span>';
+	day.innerHTML = '<span>' + date.getDate() + '</span>'; // generate calendar number
 
 }
 
@@ -142,29 +142,12 @@ var startTime;
 var startY;
 var goalY;
 
-function curve(x)
-{
-	return (x < 0.5) ? (4*x*x*x) : (1 - 4*(1-x)*(1-x)*(1-x));
-}
 
-/*function scrollAnimation()
-{
-	var percent = (new Date() - startTime) / 1000;
-
-	if(percent > 1) window.scrollTo(0, goalY);
-	else
-	{
-		window.scrollTo(0, Math.round(startY + (goalY - startY) * curve(percent)));
-		setTimeout('scrollAnimation()', 10);
-	}
-}*/
 
 function documentScrollTop()
 {
 	var scrollTop = document.body.scrollTop;
 	if(document.documentElement) scrollTop = Math.max(scrollTop, document.documentElement.scrollTop);
-	
-	// console.log("this.scrollHeight is " + this.scrollHeight);
 	
 	return scrollTop;
 }
@@ -187,18 +170,10 @@ function documentScrollHeight()
 	return scrollHeight;
 }
 
-/*function smoothScrollToToday()
-{
-	goalY = scrollPositionForElement(document.getElementById(idForDate(todayDate)));
-	startY = documentScrollTop();
-	startTime = new Date();
-	if(goalY != startY) setTimeout('scrollAnimation()', 10);
-}*/
-
 // TODO: when scrolling down, safari sometimes scrolls down by the exact height of content added
 function poll()
 {
-	// add more weeks so you can always keep scrolling
+/*	// add more weeks so you can always keep scrolling
 	if(documentScrollTop() < 200)
 	{
 		var oldScrollHeight = documentScrollHeight();
@@ -208,15 +183,15 @@ function poll()
 	else if(documentScrollTop() > documentScrollHeight() - window.innerHeight - 200)
 	{
 		for(var i = 0; i < 8; i++) appendWeek();
-	}
+	}*/
 
 	// update today when the date changes
 	var newTodayDate = new Date;
 	if(newTodayDate.getDate() != todayDate.getDate() || newTodayDate.getMonth() != todayDate.getMonth() || newTodayDate.getFullYear() != todayDate.getFullYear())
 	{
 
-/*		var todayElement = document.getElementById(idForDate(todayDate));
-		if(todayElement) todayElement.className = todayElement.className.replace('today', '');*/
+		var todayElement = document.getElementById(idForDate(todayDate));
+		if(todayElement) todayElement.className = todayElement.className.replace('today', '');
 
 		todayDate = newTodayDate;
 
@@ -260,8 +235,6 @@ window.onload = function()
 	setInterval('poll()', 100);
 }
 
-function showHelp() { document.getElementById('help').style.display = 'block'; }
-function hideHelp() { document.getElementById('help').style.display = 'none'; }
 
 
 //document.write('<table id="calendar"></table>');
