@@ -129,8 +129,6 @@ function scrollPositionForElement(element)
 		element = element.offsetParent;
 		y += element.offsetTop;
 	}
-	
-	// console.log("y " + y); // 372
 
 	// center the element in the window
 	return y - (window.innerHeight - clientHeight) / 2;
@@ -146,14 +144,11 @@ function scrollToToday()
 // var goalY;
 
 
-// change to element scroll top
-function elementScrollTop()
+
+function documentScrollTop()
 {
 	var scrollTop = document.body.scrollTop;
 	if(document.documentElement) scrollTop = Math.max(scrollTop, document.documentElement.scrollTop);
-	
-	// console.log("scrollTop " + scrollTop); // infinetly calculates scroll position
-	console.log("document.body " + document.body);
 	
 	return scrollTop;
 }
@@ -170,34 +165,26 @@ console.log("calendar container is " + calendarContainer);
 
 function documentScrollHeight()
 {
-	var scrollHeight = document.getElementById('calendarContainer').scrollHeight; // 600
-	if(document.documentElement) scrollHeight = Math.max(scrollHeight, document.getElementById('calendarContainer').scrollHeight);
+	var scrollHeight = document.body.scrollHeight; // 600
+	if(document.documentElement) scrollHeight = Math.max(scrollHeight, document.documentElement.scrollHeight);
 	
-	console.log("scrollHeight " + scrollHeight);
+	// console.log("scrollHeight " + scrollHeight);
 	
 	return scrollHeight;
 }
 
-// function for adding weeks while scrolling
+// TODO: when scrolling down, safari sometimes scrolls down by the exact height of content added
 function poll()
 {
 	// add more weeks so you can always keep scrolling
-	if(elementScrollTop() < 200)
+	if(documentScrollTop() < 200)
 	{
-		
 		var oldScrollHeight = documentScrollHeight();
 		for(var i = 0; i < 8; i++) prependWeek();
 		window.scrollBy(0, documentScrollHeight() - oldScrollHeight);
 	}
-	
-	// calculate distance scrolled from top of document
-	
-	else if(elementScrollTop() > documentScrollHeight() - window.innerHeight - 200)
+	else if(documentScrollTop() > documentScrollHeight() - window.innerHeight - 200)
 	{
-		
-		
-		console.log("elementScrollTop() " + elementScrollTop()); // 208
-		
 		for(var i = 0; i < 8; i++) appendWeek();
 	}
 
@@ -255,8 +242,7 @@ window.onload = function()
 	loadCalendarAroundDate(todayDate);
 	
 	// sets interval of poll function
-	// 100 
-	setInterval('poll()', 500);
+	setInterval('poll()', 100);
 }
 
 
