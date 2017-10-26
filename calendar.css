@@ -86,7 +86,9 @@ table.calendar {
 	}
 }
 
-
+.first {
+	background-color: pink !important;
+}
 
 #calendarContainer {
 	height: 400px;
@@ -95,10 +97,10 @@ table.calendar {
 .calendar-wrapper {
 	height: 400px;
 	width: 100%;
-	//overflow: hidden;
+	overflow: hidden;
 }
 .calendar-wrapper-inner {
 	height: 400px;
 	width: 100%;
-	//overflow-y: scroll;
+	overflow-y: scroll;
 }

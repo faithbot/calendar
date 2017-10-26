@@ -44,10 +44,12 @@ function generateDay(day, date)
 {
 	var isShaded = (date.getMonth() % 2);
 	var isToday = (date.getDate() == todayDate.getDate() && date.getMonth() == todayDate.getMonth() && date.getFullYear() == todayDate.getFullYear());
+	var isTheFirst = (date.getDate() === 1);
 
 	if(isShaded) day.className += ' shaded';
 	if(isToday) day.className += ' today';
-
+	if(isTheFirst) day.className += ' first';
+	
 	day.id = idForDate(date);
 	day.innerHTML = '<span>' + date.getDate() + '</span>'; // generate calendar number
 
@@ -133,19 +135,24 @@ function documentScrollHeight()
 
 function poll()
 {
-	console.log("documentScrollTop() " + documentScrollTop());
+/*	console.log("documentScrollTop() " + documentScrollTop());
+	console.log("window.innerHeight " + window.innerHeight);
 	
 	// add more weeks so you can always keep scrolling
 	if(documentScrollTop() < 200)
 	{
 		var oldScrollHeight = documentScrollHeight();
-		for(var i = 0; i < 8; i++) prependWeek();
+		for(var i = 0; i < 8; i++) 
+			prependWeek();
+			console.log("i " + i);
 		window.scrollBy(0, documentScrollHeight() - oldScrollHeight);
 	}
 	else if(documentScrollTop() > documentScrollHeight() - window.innerHeight - 200)
 	{
-		for(var i = 0; i < 8; i++) appendWeek();
-	}
+		for(var i = 0; i < 8; i++) 
+			appendWeek();
+			console.log("i " + i);
+	}*/
 
 	// update today when the date changes
 	var newTodayDate = new Date;
@@ -166,6 +173,8 @@ function loadCalendarAroundDate(seedDate)
 {
 	calendarTableElement.innerHTML = '';
 	firstDate = new Date(seedDate);
+	
+	newDate = new Date ("2017-01-01");
 
 	// move firstDate to the beginning of the week
 	while(firstDate.getDay() != 0) firstDate.setDate(firstDate.getDate() - 1);
@@ -178,11 +187,19 @@ function loadCalendarAroundDate(seedDate)
 	appendWeek();
 
 	// fill up the entire window with weeks
-	while(documentScrollHeight() <= window.innerHeight)
+	
+	
+	while(newDate < firstDate)
 	{
 		prependWeek();
 		appendWeek();
 	}
+	
+/*	while(documentScrollHeight() <= window.innerHeight)
+	{
+		prependWeek();
+		appendWeek();
+	}*/
 
 	// need to let safari recalculate heights before we start scrolling
 	setTimeout('scrollToToday()', 50);
