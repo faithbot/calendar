@@ -88,13 +88,13 @@ table.calendar {
 
 
 
-#fxh {
-	height: 600px;
+#calendarContainer {
+	height: 200px;
 }
 
 .calendar-wrapper,
 .calendar-wrapper-inner {
-	height: 600px;
+	height: 200px;
 	max-height: 600px;
 	width: 500px;
 	//overflow: hidden;
