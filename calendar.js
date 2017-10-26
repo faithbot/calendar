@@ -131,7 +131,6 @@ function documentScrollHeight()
 	return scrollHeight;
 }
 
-// TODO: when scrolling down, safari sometimes scrolls down by the exact height of content added
 function poll()
 {
 	// add more weeks so you can always keep scrolling
