@@ -133,6 +133,8 @@ function documentScrollHeight()
 
 function poll()
 {
+	console.log("documentScrollTop() " + documentScrollTop());
+	
 	// add more weeks so you can always keep scrolling
 	if(documentScrollTop() < 200)
 	{
@@ -199,5 +201,6 @@ window.onload = function()
 	loadCalendarAroundDate(todayDate);
 	
 	// sets interval of poll function
-	setInterval('poll()', 100);
+	// old value = 100
+	setInterval('poll()', 300);
 }
