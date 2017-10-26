@@ -147,7 +147,7 @@ function scrollToToday()
 
 
 // change to element scroll top
-function documentScrollTop()
+function elementScrollTop()
 {
 	var scrollTop = document.body.scrollTop;
 	if(document.documentElement) scrollTop = Math.max(scrollTop, document.documentElement.scrollTop);
@@ -182,7 +182,7 @@ function documentScrollHeight()
 function poll()
 {
 	// add more weeks so you can always keep scrolling
-	if(documentScrollTop() < 200)
+	if(elementScrollTop() < 200)
 	{
 		
 		var oldScrollHeight = documentScrollHeight();
@@ -192,11 +192,11 @@ function poll()
 	
 	// calculate distance scrolled from top of document
 	
-	else if(documentScrollTop() > documentScrollHeight() - window.innerHeight - 200)
+	else if(elementScrollTop() > documentScrollHeight() - window.innerHeight - 200)
 	{
 		
 		
-		console.log("documentScrollTop() " + documentScrollTop()); // 208
+		console.log("elementScrollTop() " + elementScrollTop()); // 208
 		
 		for(var i = 0; i < 8; i++) appendWeek();
 	}
