@@ -120,16 +120,6 @@ function documentScrollTop()
 	
 	return scrollTop;
 }
-	
-
-var elementInHtml = document.getElementById('calendarContainer').clientHeight; // 600, height ofcontainer
-console.log("calendarContainer is " + elementInHtml);
-
-	
-// get the outer div element
-var calendarContainer = document.getElementById('calendarContainer');
-console.log("calendar container is " + calendarContainer);
-
 
 function documentScrollHeight()
 {
