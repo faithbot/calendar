@@ -170,8 +170,6 @@ function loadCalendarAroundDate(seedDate)
 	// move firstDate to the beginning of the week
 	while(firstDate.getDay() != 0) firstDate.setDate(firstDate.getDate() - 1);
 	
-	console.log("firstDate.getDay() " + firstDate.getDay());
-	
 	// set lastDate to the day before firstDate
 	lastDate = new Date(firstDate);
 	lastDate.setDate(firstDate.getDate() - 1);
@@ -182,9 +180,6 @@ function loadCalendarAroundDate(seedDate)
 	// fill up the entire window with weeks
 	while(documentScrollHeight() <= window.innerHeight)
 	{
-		console.log("window.innerHeight " + window.innerHeight); // 655
-		console.log("documentScrollHeight() " + documentScrollHeight()); // 655
-		
 		prependWeek();
 		appendWeek();
 	}
