@@ -33,6 +33,8 @@ var calendarTableElement;
 //var itemPaddingBottom = (navigator.userAgent.indexOf('Firefox') != -1) ? 2 : 0;
 var months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ];
 
+var calendarContainer = document.getElementById('calendarContainer');
+
 function idForDate(date)
 {
 	return date.getMonth() + '_' + date.getDate() + '_' + date.getFullYear();
