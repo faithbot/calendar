@@ -89,6 +89,7 @@ function prependWeek()
 		if(firstDate.getDate() == 1) monthName = months[firstDate.getMonth()] + '<br />' + firstDate.getFullYear();
 
 		var day = week.insertCell(0);
+		
 		generateDay(day, firstDate);
 	} while(firstDate.getDay() != 0);
 
@@ -129,7 +130,7 @@ function scrollPositionForElement(element)
 		y += element.offsetTop;
 	}
 	
-	console.log("y " + y); // 372
+	// console.log("y " + y); // 372
 
 	// center the element in the window
 	return y - (window.innerHeight - clientHeight) / 2;
@@ -140,16 +141,19 @@ function scrollToToday()
 	window.scrollTo(0, scrollPositionForElement(document.getElementById(idForDate(todayDate))));
 }
 
-var startTime;
-var startY;
-var goalY;
+// var startTime;
+// var startY;
+// var goalY;
 
 
-
+// change to element scroll top
 function documentScrollTop()
 {
 	var scrollTop = document.body.scrollTop;
 	if(document.documentElement) scrollTop = Math.max(scrollTop, document.documentElement.scrollTop);
+	
+	// console.log("scrollTop " + scrollTop); // infinetly calculates scroll position
+	console.log("document.body " + document.body);
 	
 	return scrollTop;
 }
@@ -166,29 +170,39 @@ console.log("calendar container is " + calendarContainer);
 
 function documentScrollHeight()
 {
-	var scrollHeight = document.body.scrollHeight; // 600
-	if(document.documentElement) scrollHeight = Math.max(scrollHeight, document.documentElement.scrollHeight);
+	var scrollHeight = document.getElementById('calendarContainer').scrollHeight; // 600
+	if(document.documentElement) scrollHeight = Math.max(scrollHeight, document.getElementById('calendarContainer').scrollHeight);
+	
+	console.log("scrollHeight " + scrollHeight);
 	
 	return scrollHeight;
 }
 
-// TODO: when scrolling down, safari sometimes scrolls down by the exact height of content added
+// function for adding weeks while scrolling
 function poll()
 {
-/*	// add more weeks so you can always keep scrolling
+	// add more weeks so you can always keep scrolling
 	if(documentScrollTop() < 200)
 	{
+		
 		var oldScrollHeight = documentScrollHeight();
 		for(var i = 0; i < 8; i++) prependWeek();
 		window.scrollBy(0, documentScrollHeight() - oldScrollHeight);
 	}
+	
+	// calculate distance scrolled from top of document
+	
 	else if(documentScrollTop() > documentScrollHeight() - window.innerHeight - 200)
 	{
+		
+		
+		console.log("documentScrollTop() " + documentScrollTop()); // 208
+		
 		for(var i = 0; i < 8; i++) appendWeek();
-	}*/
+	}
 
 	// update today when the date changes
-	var newTodayDate = new Date;
+/*	var newTodayDate = new Date;
 	if(newTodayDate.getDate() != todayDate.getDate() || newTodayDate.getMonth() != todayDate.getMonth() || newTodayDate.getFullYear() != todayDate.getFullYear())
 	{
 
@@ -199,7 +213,7 @@ function poll()
 
 		todayElement = document.getElementById(idForDate(todayDate));
 		if(todayElement) todayElement.className += ' today';
-	}
+	}*/
 }
 
 function loadCalendarAroundDate(seedDate)
@@ -209,7 +223,9 @@ function loadCalendarAroundDate(seedDate)
 
 	// move firstDate to the beginning of the week
 	while(firstDate.getDay() != 0) firstDate.setDate(firstDate.getDate() - 1);
-
+	
+	console.log("firstDate.getDay() " + firstDate.getDay());
+	
 	// set lastDate to the day before firstDate
 	lastDate = new Date(firstDate);
 	lastDate.setDate(firstDate.getDate() - 1);
@@ -220,12 +236,12 @@ function loadCalendarAroundDate(seedDate)
 	// fill up the entire window with weeks
 	while(documentScrollHeight() <= window.innerHeight)
 	{
+		console.log("window.innerHeight " + window.innerHeight); // 655
+		console.log("documentScrollHeight() " + documentScrollHeight()); // 655
+		
 		prependWeek();
 		appendWeek();
 	}
-	
-	//console.log("document scroll height " + documentScrollHeight);
-	console.log("window.innerheight " + window.innerheight);
 
 	// need to let safari recalculate heights before we start scrolling
 	setTimeout('scrollToToday()', 50);
@@ -237,7 +253,10 @@ window.onload = function()
 	todayDate = new Date;
 
 	loadCalendarAroundDate(todayDate);
-	setInterval('poll()', 100);
+	
+	// sets interval of poll function
+	// 100 
+	setInterval('poll()', 500);
 }
 
 
