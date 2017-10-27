@@ -35,6 +35,12 @@ var months = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', '
 
 var calendarContainer = document.getElementById('calendarContainer');
 
+// hide scrollbars
+var parent = document.getElementById('calendarContainer');
+var child = document.getElementById('calendarInner');
+child.style.paddingRight = child.offsetWidth - child.clientWidth + "px";
+
+
 function idForDate(date)
 {
 	return date.getMonth() + '_' + date.getDate() + '_' + date.getFullYear();
@@ -48,10 +54,15 @@ function generateDay(day, date)
 
 	if(isShaded) day.className += ' shaded';
 	if(isToday) day.className += ' today';
-	if(isTheFirst) day.className += ' first';
+	if(isTheFirst) {
+		day.className += ' first';
+		day.innerHTML += '<span class="month-name">' + months[date.getMonth()] + '</span>';
+	}
 	
 	day.id = idForDate(date);
-	day.innerHTML = '<span>' + date.getDate() + '</span>'; // generate calendar number
+	day.innerHTML += '<span class="date-number">' + date.getDate() + '</span>'; // generate calendar number
+	
+	console.log("day " + day);
 
 }
 

@@ -1,6 +1,5 @@
-body, td {
+td {
 	background: white;
-	color: #3a3a3a;
 	margin: 0;
 	font: 12px sans-serif;
 }
@@ -13,6 +12,7 @@ table.calendar {
 }
 
 .calendar td {
+	position: relative;
 	border-right: 1px solid #bbb;
 	border-bottom: 1px solid #bbb;
 	padding: 3px 15px 20px 3px;
@@ -23,8 +23,17 @@ table.calendar {
 	cursor: pointer;
 }
 
-.calendar td span {
+.calendar td .date-number {
+	color: #555;
 	margin-right: -10px;
+}
+
+.calendar .month-name {
+	color: #777;
+	position: absolute;
+	left: 5px;
+	text-align: left;
+	font-style: italic;
 }
 
 .calendar td.extra {
@@ -86,21 +95,14 @@ table.calendar {
 	}
 }
 
-.first {
-	background-color: pink !important;
-}
-
-#calendarContainer {
-	height: 400px;
-}
 
 .calendar-wrapper {
-	height: 400px;
+	height: 600px;
 	width: 100%;
 	overflow: hidden;
 }
 .calendar-wrapper-inner {
-	height: 400px;
+	max-height: 600px;
 	width: 100%;
 	overflow-y: scroll;
 }
